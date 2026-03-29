@@ -96,7 +96,7 @@ export function HuntDetail({ hunt, game, onPatch, onReset, onMarkFound }) {
             +1
           </button>
         </div>
-        <p className="mt-2 text-xs text-amber-100/70 sm:mt-3">Press SPACE to increment quickly</p>
+        <p className="mt-2 hidden text-xs text-amber-100/70 sm:mt-3 sm:block">Press SPACE to increment quickly</p>
       </div>
 
       {showStats && (

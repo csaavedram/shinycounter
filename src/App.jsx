@@ -39,6 +39,7 @@ function App() {
   const [celebrationCapture, setCelebrationCapture] = useState(null)
   const [captureDeleteTarget, setCaptureDeleteTarget] = useState(null)
   const [importCandidate, setImportCandidate] = useState(null)
+  const [showStorageInfo, setShowStorageInfo] = useState(false)
   const [alertModal, setAlertModal] = useState({ open: false, title: '', message: '' })
   const importInputRef = useRef(null)
 
@@ -217,7 +218,7 @@ function App() {
             <Navigation />
             <button
               className="inline-flex h-8 items-center justify-center gap-1 rounded-xl bg-amber-400 px-2 text-xs font-semibold text-slate-900 hover:bg-amber-300 sm:h-10 sm:gap-2 sm:px-3 sm:text-sm"
-              onClick={() => exportStorage(data)}
+              onClick={() => setShowStorageInfo(true)}
               title="Save data to JSON"
               type="button"
             >
@@ -315,7 +316,7 @@ function App() {
       />
 
       <ConfirmModal
-        message="This will overwrite your current local data with imported data. Continue?"
+        message="This will overwrite your current data with the imported file. Your current hunts and captures will be replaced and cannot be recovered unless you have another backup. Continue?"
         onCancel={() => setImportCandidate(null)}
         onConfirm={() => {
           if (!importCandidate) return
@@ -328,7 +329,7 @@ function App() {
           setImportCandidate(null)
         }}
         open={Boolean(importCandidate)}
-        title="Confirm Import"
+        title="⚠️ Overwrite Data?"
       />
 
       <AlertModal
@@ -352,6 +353,58 @@ function App() {
         open={showManualCapture}
         pokemons={pokemon}
       />
+
+      {showStorageInfo && (
+        <div className="fixed inset-0 z-50 grid place-items-center bg-slate-900/50 p-3 backdrop-blur-sm sm:p-4">
+          <div className="w-full max-w-lg rounded-3xl bg-white p-4 shadow-2xl ring-1 ring-slate-200 sm:p-6">
+            <h3 className="font-display text-2xl text-slate-900 sm:text-3xl">Data Storage Information</h3>
+            <div className="mt-3 space-y-3 text-sm text-slate-700 sm:mt-4 sm:text-base">
+              <div>
+                <p className="font-semibold text-slate-900">Automatic Storage</p>
+                <p className="mt-1">Your hunt data is automatically saved to browser localStorage. Changes sync instantly.</p>
+              </div>
+              <div className="rounded-lg bg-amber-50 p-3 ring-1 ring-amber-200">
+                <p className="font-semibold text-amber-950">⚠️ Important Warning</p>
+                <p className="mt-1 text-amber-900">localStorage data can be lost if you:</p>
+                <ul className="mt-1 ml-4 list-disc space-y-1 text-amber-900">
+                  <li>Clear your browser cache</li>
+                  <li>Clear cookies and site data</li>
+                  <li>Use private/incognito browsing mode</li>
+                  <li>Reinstall the browser</li>
+                  <li>Reach storage limit</li>
+                </ul>
+              </div>
+              <div>
+                <p className="font-semibold text-slate-900">Backup Your Data</p>
+                <p className="mt-1">Click the <span className="font-mono font-semibold">Save</span> button regularly to download a JSON backup file that you can safely store and restore later.</p>
+              </div>
+              <div>
+                <p className="font-semibold text-slate-900">Restore from Backup</p>
+                <p className="mt-1">Use the <span className="font-mono font-semibold">Load</span> button to import a previously saved JSON file.</p>
+              </div>
+            </div>
+            <div className="mt-4 flex gap-2 sm:mt-6 sm:gap-3">
+              <button
+                className="flex-1 rounded-xl bg-sky-700 px-3 py-2 text-sm font-semibold text-white sm:px-4"
+                onClick={() => {
+                  exportStorage(data)
+                  setShowStorageInfo(false)
+                }}
+                type="button"
+              >
+                Save Backup Now
+              </button>
+              <button
+                className="rounded-xl border border-slate-300 px-3 py-2 text-sm font-medium sm:px-4"
+                onClick={() => setShowStorageInfo(false)}
+                type="button"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
