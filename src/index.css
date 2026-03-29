@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Lexend', sans-serif;
+  --font-display: 'Chakra Petch', sans-serif;
+  --color-page: #f3f8ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  background:
+    radial-gradient(circle at 15% 12%, rgba(56, 189, 248, 0.22), transparent 34%),
+    radial-gradient(circle at 85% 18%, rgba(251, 146, 60, 0.24), transparent 38%),
+    radial-gradient(circle at 50% 100%, rgba(192, 132, 252, 0.2), transparent 36%),
+    linear-gradient(180deg, #eef8ff 0%, #f8fbff 45%, #fff8ee 100%);
+  color: #1e293b;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.45;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-rise {
+  animation: rise 360ms ease-out both;
+}

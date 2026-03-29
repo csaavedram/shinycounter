@@ -1,0 +1,302 @@
+export const GAMES = [
+  {
+    id: 'gold-silver-crystal',
+    name: 'Pokemon Gold / Silver / Crystal',
+    baseRate: '1/8192',
+    dexRange: [1, 251],
+    mechanics: {
+      shinyCharm: false,
+      sparklingPower: false,
+      outbreak: false,
+      research: false,
+    },
+    methods: ['encounters', 'softResets'],
+    rules: {
+      shinyCharmBonus: 0,
+    },
+  },
+  {
+    id: 'ruby-sapphire',
+    name: 'Pokemon Ruby / Sapphire',
+    baseRate: '1/8192',
+    dexRange: [1, 386],
+    mechanics: {
+      shinyCharm: false,
+      sparklingPower: false,
+      outbreak: false,
+      research: false,
+    },
+    methods: ['encounters', 'softResets'],
+    rules: {
+      shinyCharmBonus: 0,
+    },
+  },
+  {
+    id: 'emerald',
+    name: 'Pokemon Emerald',
+    baseRate: '1/8192',
+    dexRange: [1, 386],
+    mechanics: {
+      shinyCharm: false,
+      sparklingPower: false,
+      outbreak: false,
+      research: false,
+    },
+    methods: ['encounters', 'softResets'],
+    rules: {
+      shinyCharmBonus: 0,
+    },
+  },
+  {
+    id: 'firered-leafgreen',
+    name: 'Pokemon FireRed / LeafGreen',
+    baseRate: '1/8192',
+    dexRange: [1, 386],
+    mechanics: {
+      shinyCharm: false,
+      sparklingPower: false,
+      outbreak: false,
+      research: false,
+    },
+    methods: ['encounters', 'softResets', 'breeding'],
+    rules: {
+      shinyCharmBonus: 0,
+    },
+  },
+  {
+    id: 'diamond-pearl-platinum',
+    name: 'Pokemon Diamond / Pearl / Platinum',
+    baseRate: '1/8192',
+    dexRange: [1, 493],
+    mechanics: {
+      shinyCharm: false,
+      sparklingPower: false,
+      outbreak: false,
+      research: false,
+    },
+    methods: ['encounters', 'softResets', 'breeding', 'masuda', 'chain'],
+    rules: {
+      shinyCharmBonus: 0,
+    },
+  },
+  {
+    id: 'heartgold-soulsilver',
+    name: 'Pokemon HeartGold / SoulSilver',
+    baseRate: '1/8192',
+    dexRange: [1, 493],
+    mechanics: {
+      shinyCharm: false,
+      sparklingPower: false,
+      outbreak: false,
+      research: false,
+    },
+    methods: ['encounters', 'softResets', 'breeding'],
+    rules: {
+      shinyCharmBonus: 0,
+    },
+  },
+  {
+    id: 'bw',
+    name: 'Pokemon Black / White',
+    baseRate: '1/8192',
+    dexRange: [1, 649],
+    mechanics: {
+      shinyCharm: false,
+      sparklingPower: false,
+      outbreak: false,
+      research: false,
+    },
+    methods: ['encounters', 'softResets', 'breeding', 'masuda'],
+    rules: {
+      shinyCharmBonus: 0,
+    },
+  },
+  {
+    id: 'bw2',
+    name: 'Pokemon Black 2 / White 2',
+    baseRate: '1/8192',
+    dexRange: [1, 649],
+    mechanics: {
+      shinyCharm: true,
+      sparklingPower: false,
+      outbreak: false,
+      research: false,
+    },
+    methods: ['encounters', 'softResets', 'breeding', 'masuda'],
+    rules: {
+      shinyCharmBonus: 2,
+    },
+  },
+  {
+    id: 'x-y',
+    name: 'Pokemon X / Y',
+    baseRate: '1/4096',
+    dexRange: [1, 721],
+    mechanics: {
+      shinyCharm: true,
+      sparklingPower: false,
+      outbreak: false,
+      research: false,
+    },
+    methods: ['encounters', 'softResets', 'breeding', 'masuda', 'chain'],
+    rules: {
+      shinyCharmBonus: 2,
+    },
+  },
+  {
+    id: 'oras',
+    name: 'Pokemon Omega Ruby / Alpha Sapphire',
+    baseRate: '1/4096',
+    dexRange: [1, 721],
+    mechanics: {
+      shinyCharm: true,
+      sparklingPower: false,
+      outbreak: false,
+      research: false,
+    },
+    methods: ['encounters', 'softResets', 'breeding', 'masuda', 'chain'],
+    rules: {
+      shinyCharmBonus: 2,
+    },
+  },
+  {
+    id: 'sun-moon',
+    name: 'Pokemon Sun / Moon',
+    baseRate: '1/4096',
+    dexRange: [1, 802],
+    mechanics: {
+      shinyCharm: true,
+      sparklingPower: false,
+      outbreak: false,
+      research: false,
+    },
+    methods: ['encounters', 'softResets', 'breeding', 'masuda', 'chain'],
+    rules: {
+      shinyCharmBonus: 2,
+    },
+  },
+  {
+    id: 'usum',
+    name: 'Pokemon Ultra Sun / Ultra Moon',
+    baseRate: '1/4096',
+    dexRange: [1, 807],
+    mechanics: {
+      shinyCharm: true,
+      sparklingPower: false,
+      outbreak: false,
+      research: false,
+    },
+    methods: ['encounters', 'softResets', 'breeding', 'masuda', 'chain'],
+    rules: {
+      shinyCharmBonus: 2,
+    },
+  },
+  {
+    id: 'lets-go',
+    name: 'Pokemon Let\'s Go Pikachu / Eevee',
+    baseRate: '1/4096',
+    dexRange: [1, 151],
+    mechanics: {
+      shinyCharm: true,
+      sparklingPower: false,
+      outbreak: false,
+      research: false,
+    },
+    methods: ['encounters', 'chain'],
+    rules: {
+      shinyCharmBonus: 2,
+    },
+  },
+  {
+    id: 'swsh',
+    name: 'Pokemon Sword / Shield',
+    baseRate: '1/4096',
+    dexRange: [1, 898],
+    mechanics: {
+      shinyCharm: true,
+      sparklingPower: false,
+      outbreak: false,
+      research: false,
+    },
+    methods: ['encounters', 'softResets', 'breeding', 'masuda'],
+    rules: {
+      shinyCharmBonus: 2,
+    },
+  },
+  {
+    id: 'bdsp',
+    name: 'Pokemon Brilliant Diamond / Shining Pearl',
+    baseRate: '1/4096',
+    dexRange: [1, 493],
+    mechanics: {
+      shinyCharm: true,
+      sparklingPower: false,
+      outbreak: false,
+      research: false,
+    },
+    methods: ['encounters', 'softResets', 'breeding', 'masuda'],
+    rules: {
+      shinyCharmBonus: 2,
+    },
+  },
+  {
+    id: 'scarlet-violet',
+    name: 'Pokemon Scarlet / Violet',
+    baseRate: '1/4096',
+    dexRange: [1, 1025],
+    mechanics: {
+      shinyCharm: true,
+      sparklingPower: true,
+      outbreak: true,
+      research: false,
+    },
+    methods: ['encounters', 'outbreak', 'breeding', 'masuda', 'sandwich'],
+    rules: {
+      shinyCharmBonus: 2,
+      sparklingPowerBonus: [0, 1, 2, 3],
+    },
+  },
+  {
+    id: 'legends-arceus',
+    name: 'Pokemon Legends Arceus',
+    baseRate: '1/4096',
+    dexRange: [1, 905],
+    mechanics: {
+      shinyCharm: true,
+      sparklingPower: false,
+      outbreak: true,
+      research: true,
+    },
+    methods: ['encounters', 'outbreak', 'research'],
+    rules: {
+      shinyCharmBonus: 2,
+    },
+  },
+  {
+    id: 'legends-za',
+    name: 'Pokemon Legends Z-A',
+    baseRate: '1/4096',
+    dexRange: [1, 1025],
+    mechanics: {
+      shinyCharm: true,
+      sparklingPower: false,
+      outbreak: false,
+      research: false,
+    },
+    methods: ['encounters'],
+    rules: {
+      shinyCharmBonus: 3,
+    },
+  },
+]
+
+export const METHOD_LABELS = {
+  encounters: 'Encounters',
+  softResets: 'Soft Resets',
+  breeding: 'Breeding',
+  masuda: 'Masuda Method',
+  outbreak: 'Outbreak',
+  chain: 'Chain',
+  sandwich: 'Sandwich',
+  research: 'Research',
+}
