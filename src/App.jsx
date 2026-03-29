@@ -205,34 +205,34 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-page px-4 py-6 text-slate-800 md:px-8">
+    <div className="min-h-screen bg-page px-3 py-4 text-slate-800 sm:px-4 md:px-8">
       <div className="mx-auto max-w-7xl">
-        <header className="mb-6 flex flex-wrap items-center justify-between gap-4 rounded-[2rem] bg-white/85 p-4 shadow-xl ring-1 ring-slate-200 backdrop-blur md:p-6">
-          <div>
-            <h1 className="font-display text-4xl tracking-wide text-slate-950 md:text-6xl">Shiny Hunter Counter</h1>
-            <p className="mt-1 text-sm text-slate-600 md:text-base">Your shiny grind partner.</p>
+        <header className="mb-4 flex flex-col justify-between gap-3 rounded-[2rem] bg-white/85 p-3 shadow-xl ring-1 ring-slate-200 backdrop-blur sm:mb-6 sm:flex-row sm:items-center sm:gap-4 sm:p-4 md:p-6">
+          <div className="min-w-0">
+            <h1 className="font-display text-2xl tracking-wide text-slate-950 sm:text-4xl md:text-6xl">Shiny Hunter Counter</h1>
+            <p className="mt-1 text-xs text-slate-600 sm:text-sm md:text-base">Your shiny grind partner.</p>
           </div>
 
-          <div className="flex flex-wrap items-center justify-end gap-2 rounded-2xl bg-slate-50 p-2 ring-1 ring-slate-200">
+          <div className="flex flex-wrap items-center justify-start gap-1 rounded-2xl bg-slate-50 p-1 ring-1 ring-slate-200 sm:justify-end sm:gap-2 sm:p-2">
             <Navigation />
             <button
-              className="inline-flex h-10 items-center justify-center gap-2 rounded-xl bg-amber-400 px-3 text-sm font-semibold text-slate-900 hover:bg-amber-300"
+              className="inline-flex h-8 items-center justify-center gap-1 rounded-xl bg-amber-400 px-2 text-xs font-semibold text-slate-900 hover:bg-amber-300 sm:h-10 sm:gap-2 sm:px-3 sm:text-sm"
               onClick={() => exportStorage(data)}
               title="Save data to JSON"
               type="button"
             >
-              <svg aria-hidden="true" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+              <svg aria-hidden="true" className="h-3 w-3 sm:h-4 sm:w-4" viewBox="0 0 20 20" fill="currentColor">
                 <path d="M4 3a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.414A2 2 0 0 0 17.414 6l-3.414-3.414A2 2 0 0 0 12.586 2H4zm5 1h2v4h3l-4 4-4-4h3V4z" />
               </svg>
               <span className="hidden sm:inline">Save</span>
             </button>
             <button
-              className="inline-flex h-10 items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-3 text-sm font-semibold text-slate-800"
+              className="inline-flex h-8 items-center justify-center gap-1 rounded-xl border border-slate-300 bg-white px-2 text-xs font-semibold text-slate-800 sm:h-10 sm:gap-2 sm:px-3 sm:text-sm"
               onClick={() => importInputRef.current?.click()}
               title="Load data from JSON"
               type="button"
             >
-              <svg aria-hidden="true" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+              <svg aria-hidden="true" className="h-3 w-3 sm:h-4 sm:w-4" viewBox="0 0 20 20" fill="currentColor">
                 <path d="M4 3a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.414A2 2 0 0 0 17.414 6l-3.414-3.414A2 2 0 0 0 12.586 2H4zm6 2 4 4h-3v3H9V9H6l4-4z" />
               </svg>
               <span className="hidden sm:inline">Load</span>
@@ -285,7 +285,7 @@ function App() {
           />
         </Routes>
 
-        <footer className="mt-8 rounded-3xl bg-slate-950/95 p-4 text-sm text-slate-300 ring-1 ring-slate-700">
+        <footer className="mt-6 rounded-3xl bg-slate-950/95 p-3 text-xs text-slate-300 ring-1 ring-slate-700 sm:mt-8 sm:p-4 sm:text-sm">
           This is a fan-made project and is not affiliated with Nintendo, Game Freak, or The Pokemon Company. Pokemon is a trademark of its respective owners. Data and sprites from PokeAPI. 
           Made by <a className="text-blue-400 hover:text-blue-300" href="https://github.com/csaavedram" target="_blank" rel="noopener noreferrer">
             csaavedram

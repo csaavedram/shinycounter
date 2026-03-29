@@ -97,9 +97,9 @@ export function HuntList({ games, pokemons, hunts, selectedHuntId, onSelect, onC
   }
 
   return (
-    <section className="grid gap-5 xl:grid-cols-[380px_1fr]">
-      <article className="rounded-3xl bg-white/90 p-5 shadow-xl ring-1 ring-slate-200 backdrop-blur">
-        <h2 className="font-display text-3xl text-slate-900">New Hunt</h2>
+    <section className="grid gap-5 lg:grid-cols-[320px_1fr] xl:grid-cols-[380px_1fr]">
+      <article className="rounded-3xl bg-white/90 p-4 shadow-xl ring-1 ring-slate-200 backdrop-blur sm:p-5">
+        <h2 className="font-display text-2xl text-slate-900 sm:text-3xl">New Hunt</h2>
         <form className="mt-4 grid gap-3" onSubmit={createHunt}>
           <PokemonPicker
             key={`${selectedGame.id}-${draft.pokemonId}`}
@@ -112,7 +112,7 @@ export function HuntList({ games, pokemons, hunts, selectedHuntId, onSelect, onC
           <label className="grid gap-1 text-sm font-medium text-slate-700">
             Game
             <select
-              className="rounded-xl border border-slate-300 px-3 py-2"
+              className="rounded-xl border border-slate-300 px-3 py-2 text-sm"
               value={draft.gameId}
               onChange={(event) => patchDraft({ gameId: event.target.value })}
             >
@@ -127,7 +127,7 @@ export function HuntList({ games, pokemons, hunts, selectedHuntId, onSelect, onC
           <label className="grid gap-1 text-sm font-medium text-slate-700">
             Method
             <select
-              className="rounded-xl border border-slate-300 px-3 py-2"
+              className="rounded-xl border border-slate-300 px-3 py-2 text-sm"
               value={draft.method}
               onChange={(event) => patchDraft({ method: event.target.value })}
             >
@@ -154,7 +154,7 @@ export function HuntList({ games, pokemons, hunts, selectedHuntId, onSelect, onC
             <label className="grid gap-1 text-sm font-medium text-slate-700">
               Sparkling Power
               <select
-                className="rounded-xl border border-slate-300 px-3 py-2"
+                className="rounded-xl border border-slate-300 px-3 py-2 text-sm"
                 value={draft.modifiers.sparklingPower}
                 onChange={(event) => patchModifier('sparklingPower', Number(event.target.value))}
               >
@@ -181,7 +181,7 @@ export function HuntList({ games, pokemons, hunts, selectedHuntId, onSelect, onC
             <label className="grid gap-1 text-sm font-medium text-slate-700">
               Research
               <select
-                className="rounded-xl border border-slate-300 px-3 py-2"
+                className="rounded-xl border border-slate-300 px-3 py-2 text-sm"
                 value={draft.modifiers.research}
                 onChange={(event) => patchModifier('research', event.target.value)}
               >
@@ -192,22 +192,22 @@ export function HuntList({ games, pokemons, hunts, selectedHuntId, onSelect, onC
             </label>
           )}
 
-          <button className="mt-2 rounded-xl bg-sky-700 px-4 py-2 font-semibold text-white hover:bg-sky-600" type="submit">
+          <button className="mt-2 rounded-xl bg-sky-700 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-600 sm:text-base" type="submit">
             Start Hunt
           </button>
         </form>
       </article>
 
-      <article className="rounded-3xl bg-white/90 p-5 shadow-xl ring-1 ring-slate-200 backdrop-blur">
-        <h2 className="font-display text-3xl text-slate-900">Active Hunts</h2>
+      <article className="rounded-3xl bg-white/90 p-4 shadow-xl ring-1 ring-slate-200 backdrop-blur sm:p-5">
+        <h2 className="font-display text-2xl text-slate-900 sm:text-3xl">Active Hunts</h2>
         {hunts.length === 0 ? (
-          <p className="mt-4 text-slate-500">No active hunts yet.</p>
+          <p className="mt-4 text-sm text-slate-500 sm:text-base">No active hunts yet.</p>
         ) : (
-          <ul className="mt-4 grid gap-3 md:grid-cols-2">
+          <ul className="mt-4 grid gap-2 sm:gap-3 md:grid-cols-2">
             {hunts.map((hunt) => (
               <li
                 className={[
-                  'grid gap-2 rounded-2xl border p-3 transition md:grid-cols-[64px_1fr_auto]',
+                  'grid gap-2 rounded-2xl border p-2 transition sm:p-3 md:grid-cols-[64px_1fr_auto]',
                   hunt.id === selectedHuntId
                     ? 'border-amber-400 bg-amber-50'
                     : 'border-slate-200 bg-slate-50/90 hover:border-slate-300',
@@ -216,7 +216,7 @@ export function HuntList({ games, pokemons, hunts, selectedHuntId, onSelect, onC
               >
                 <img
                   alt={`${hunt.pokemonName} shiny sprite`}
-                  className="h-14 w-14 self-center justify-self-center rounded-xl bg-slate-900/90 p-1"
+                  className="h-12 w-12 justify-self-center rounded-xl bg-slate-900/90 p-1 sm:h-14 sm:w-14"
                   loading="lazy"
                   src={getShinySpriteUrl(hunt.pokemonId)}
                 />
@@ -225,13 +225,13 @@ export function HuntList({ games, pokemons, hunts, selectedHuntId, onSelect, onC
                   onClick={() => onSelect(hunt.id)}
                   type="button"
                 >
-                  <p className="font-semibold text-slate-900">{hunt.pokemonName}</p>
+                  <p className="text-sm font-semibold text-slate-900 sm:text-base">{hunt.pokemonName}</p>
                   <p className="text-xs text-slate-500">{gameNameById[hunt.gameId] || hunt.gameId}</p>
-                  <p className="text-sm text-slate-600">{hunt.count.toLocaleString()} encounters</p>
+                  <p className="text-xs text-slate-600 sm:text-sm">{hunt.count.toLocaleString()} encounters</p>
                   <p className="text-xs text-slate-500">{METHOD_LABELS[hunt.method]}</p>
                 </button>
                 <button
-                  className="rounded-xl border border-red-200 px-3 py-1 text-sm font-semibold text-red-700"
+                  className="rounded-xl border border-red-200 px-2 py-1 text-xs font-semibold text-red-700 sm:px-3 sm:text-sm"
                   onClick={() => onDelete(hunt.id)}
                   type="button"
                 >

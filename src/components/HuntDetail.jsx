@@ -46,82 +46,82 @@ export function HuntDetail({ hunt, game, onPatch, onReset, onMarkFound }) {
   )
 
   return (
-    <article className="rounded-3xl bg-white/95 p-6 shadow-xl ring-1 ring-slate-200 backdrop-blur">
-      <div className="flex flex-wrap items-start justify-between gap-2">
-        <div className="flex items-center gap-4">
+    <article className="rounded-3xl bg-white/95 p-4 shadow-xl ring-1 ring-slate-200 backdrop-blur md:p-6">
+      <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-start md:gap-2">
+        <div className="flex items-center gap-3 sm:gap-4">
           <img
             alt={`${hunt.pokemonName} shiny sprite`}
-            className="h-20 w-20 rounded-2xl bg-slate-950 p-2"
+            className="h-16 w-16 rounded-2xl bg-slate-950 p-2 sm:h-20 sm:w-20"
             src={getShinySpriteUrl(hunt.pokemonId)}
           />
-          <div>
-            <h2 className="font-display text-4xl text-slate-900">{hunt.pokemonName}</h2>
-            <p className="text-slate-600">{game.name} · {METHOD_LABELS[hunt.method]}</p>
+          <div className="min-w-0">
+            <h2 className="font-display text-2xl text-slate-900 sm:text-3xl md:text-4xl">{hunt.pokemonName}</h2>
+            <p className="truncate text-xs text-slate-600 sm:text-sm">{game.name} · {METHOD_LABELS[hunt.method]}</p>
           </div>
         </div>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2 self-start">
           <button
-            className="rounded-xl border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700"
+            className="rounded-xl border border-slate-300 px-3 py-1 text-xs font-semibold text-slate-700 sm:px-4 sm:py-2 sm:text-sm"
             onClick={() => setShowStats((current) => !current)}
             type="button"
           >
-            {showStats ? 'Hide Hunt Stats' : 'Show Hunt Stats'}
+            {showStats ? 'Hide Stats' : 'Show Stats'}
           </button>
           <button
-            className="rounded-xl border border-red-300 px-4 py-2 text-sm font-semibold text-red-700"
+            className="rounded-xl border border-red-300 px-3 py-1 text-xs font-semibold text-red-700 sm:px-4 sm:py-2 sm:text-sm"
             onClick={() => onReset(hunt.id)}
             type="button"
           >
-            Reset Counter
+            Reset
           </button>
         </div>
       </div>
 
-      <div className="mt-8 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-700 px-6 py-8 text-center text-amber-200 shadow-inner">
-        <p className="font-display text-7xl tracking-wide md:text-8xl">{hunt.count.toLocaleString()}</p>
-        <p className="mt-2 text-sm uppercase tracking-[0.25em] text-amber-100/80">Encounters</p>
-        <div className="mt-6 flex items-center justify-center gap-3">
+      <div className="mt-4 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-700 px-4 py-6 text-center text-amber-200 shadow-inner sm:mt-6 sm:px-6 sm:py-8 md:mt-8">
+        <p className="font-display text-4xl tracking-wide sm:text-5xl md:text-7xl lg:text-8xl">{hunt.count.toLocaleString()}</p>
+        <p className="mt-1 text-xs uppercase tracking-[0.25em] text-amber-100/80 sm:mt-2">Encounters</p>
+        <div className="mt-4 flex items-center justify-center gap-2 sm:mt-6 sm:gap-3">
           <button
-            className="rounded-2xl border border-amber-300/50 px-4 py-2 text-xl font-bold"
+            className="rounded-2xl border border-amber-300/50 px-3 py-1 text-lg font-bold sm:px-4 sm:py-2 md:text-xl"
             onClick={() => increment(-1)}
             type="button"
           >
             -1
           </button>
           <button
-            className="rounded-2xl bg-amber-300 px-8 py-3 text-2xl font-extrabold text-slate-950"
+            className="rounded-2xl bg-amber-300 px-6 py-2 text-xl font-extrabold text-slate-950 sm:px-8 sm:py-3 md:text-2xl"
             onClick={() => increment(1)}
             type="button"
           >
             +1
           </button>
         </div>
-        <p className="mt-3 text-xs text-amber-100/70">Press SPACE to increment quickly</p>
+        <p className="mt-2 text-xs text-amber-100/70 sm:mt-3">Press SPACE to increment quickly</p>
       </div>
 
       {showStats && (
-        <div className="mt-4 grid gap-3 rounded-3xl bg-slate-50 p-4 ring-1 ring-slate-200 md:grid-cols-4">
+        <div className="mt-3 grid gap-3 rounded-3xl bg-slate-50 p-3 ring-1 ring-slate-200 sm:mt-4 sm:p-4 md:grid-cols-4">
           <div>
             <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Live Timer</p>
-            <p className="font-mono text-xl text-slate-900">{timer}</p>
+            <p className="font-mono text-lg text-slate-900 sm:text-xl">{timer}</p>
           </div>
           <div>
             <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Rolls</p>
-            <p className="font-mono text-xl text-slate-900">{probability.rolls} / {probability.denominator}</p>
+            <p className="font-mono text-lg text-slate-900 sm:text-xl">{probability.rolls} / {probability.denominator}</p>
           </div>
           <div>
             <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Current odds</p>
-            <p className="font-mono text-xl text-slate-900">1 / {probability.odds.toLocaleString()}</p>
+            <p className="font-mono text-lg text-slate-900 sm:text-xl">1 / {probability.odds.toLocaleString()}</p>
           </div>
           <div>
             <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Cumulative probability</p>
-            <p className="font-mono text-xl text-slate-900">{(probability.chance * 100).toFixed(2)}%</p>
+            <p className="font-mono text-lg text-slate-900 sm:text-xl">{(probability.chance * 100).toFixed(2)}%</p>
           </div>
         </div>
       )}
 
       <button
-        className="mt-6 w-full rounded-2xl bg-gradient-to-r from-emerald-400 to-lime-300 px-4 py-3 text-lg font-bold text-emerald-950"
+        className="mt-4 w-full rounded-2xl bg-gradient-to-r from-emerald-400 to-lime-300 px-4 py-2 text-base font-bold text-emerald-950 sm:mt-6 sm:py-3 md:text-lg"
         onClick={() => onMarkFound(hunt.id)}
         type="button"
       >

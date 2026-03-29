@@ -8,10 +8,10 @@ function ModalFrame({ open, title, children }) {
   if (!open) return null
 
   return (
-    <div className="fixed inset-0 z-50 grid place-items-center bg-slate-900/50 p-4 backdrop-blur-sm">
-      <div className="w-full max-w-lg rounded-3xl bg-white p-6 shadow-2xl ring-1 ring-slate-200">
-        <h3 className="font-display text-3xl text-slate-900">{title}</h3>
-        <div className="mt-4">{children}</div>
+    <div className="fixed inset-0 z-50 grid place-items-center bg-slate-900/50 p-3 backdrop-blur-sm sm:p-4">
+      <div className="w-full max-w-lg rounded-3xl bg-white p-4 shadow-2xl ring-1 ring-slate-200 sm:p-6">
+        <h3 className="font-display text-2xl text-slate-900 sm:text-3xl">{title}</h3>
+        <div className="mt-3 sm:mt-4">{children}</div>
       </div>
     </div>
   )
@@ -20,13 +20,13 @@ function ModalFrame({ open, title, children }) {
 export function ConfirmModal({ open, title, message, onConfirm, onCancel }) {
   return (
     <ModalFrame open={open} title={title}>
-      <p className="text-slate-600">{message}</p>
-      <div className="mt-6 flex justify-end gap-3">
-        <button className="rounded-xl border border-slate-300 px-4 py-2" onClick={onCancel} type="button">
+      <p className="text-sm text-slate-600 sm:text-base">{message}</p>
+      <div className="mt-4 flex justify-end gap-2 sm:mt-6 sm:gap-3">
+        <button className="rounded-xl border border-slate-300 px-3 py-1 text-sm font-medium sm:px-4 sm:py-2" onClick={onCancel} type="button">
           Cancel
         </button>
         <button
-          className="rounded-xl bg-red-600 px-4 py-2 font-semibold text-white"
+          className="rounded-xl bg-red-600 px-3 py-1 text-sm font-semibold text-white sm:px-4 sm:py-2"
           onClick={onConfirm}
           type="button"
         >
@@ -40,9 +40,9 @@ export function ConfirmModal({ open, title, message, onConfirm, onCancel }) {
 export function AlertModal({ open, title, message, onClose }) {
   return (
     <ModalFrame open={open} title={title}>
-      <p className="text-slate-600">{message}</p>
-      <div className="mt-6 flex justify-end">
-        <button className="rounded-xl bg-slate-900 px-4 py-2 font-semibold text-white" onClick={onClose} type="button">
+      <p className="text-sm text-slate-600 sm:text-base">{message}</p>
+      <div className="mt-4 flex justify-end sm:mt-6">
+        <button className="rounded-xl bg-slate-900 px-3 py-1 text-sm font-semibold text-white sm:px-4 sm:py-2" onClick={onClose} type="button">
           OK
         </button>
       </div>
@@ -54,14 +54,14 @@ export function CelebrationModal({ open, capture, onClose }) {
   return (
     <ModalFrame open={open} title="🎉 Congratulations!">
       {capture && (
-        <div className="space-y-2 text-slate-700">
-          <p className="text-xl font-semibold text-slate-900">{capture.pokemonName} is shiny!</p>
+        <div className="space-y-1 text-sm text-slate-700 sm:space-y-2 sm:text-base">
+          <p className="text-base font-semibold text-slate-900 sm:text-xl">{capture.pokemonName} is shiny!</p>
           <p>Encounters: {capture.encounters.toLocaleString()}</p>
           <p>Total time: {capture.totalTime}</p>
         </div>
       )}
-      <div className="mt-6 flex justify-end">
-        <button className="rounded-xl bg-slate-900 px-4 py-2 font-semibold text-white" onClick={onClose} type="button">
+      <div className="mt-4 flex justify-end sm:mt-6">
+        <button className="rounded-xl bg-slate-900 px-3 py-1 text-sm font-semibold text-white sm:px-4 sm:py-2" onClick={onClose} type="button">
           Close
         </button>
       </div>
@@ -152,7 +152,7 @@ export function ManualCaptureModal({ open, pokemons, games, onSubmit, onClose, o
         <label className="grid gap-1 text-sm font-medium text-slate-700">
           Game
           <select
-            className="rounded-xl border border-slate-300 px-3 py-2"
+            className="rounded-xl border border-slate-300 px-3 py-2 text-sm"
             value={form.gameId}
             onChange={(event) => patchForm({ gameId: event.target.value })}
           >
@@ -167,7 +167,7 @@ export function ManualCaptureModal({ open, pokemons, games, onSubmit, onClose, o
         <label className="grid gap-1 text-sm font-medium text-slate-700">
           Method
           <select
-            className="rounded-xl border border-slate-300 px-3 py-2"
+            className="rounded-xl border border-slate-300 px-3 py-2 text-sm"
             value={form.method}
             onChange={(event) => patchForm({ method: event.target.value })}
           >
@@ -182,7 +182,7 @@ export function ManualCaptureModal({ open, pokemons, games, onSubmit, onClose, o
         <label className="grid gap-1 text-sm font-medium text-slate-700">
           Encounters
           <input
-            className="rounded-xl border border-slate-300 px-3 py-2"
+            className="rounded-xl border border-slate-300 px-3 py-2 text-sm"
             min="1"
             type="number"
             value={form.encounters}
@@ -193,7 +193,7 @@ export function ManualCaptureModal({ open, pokemons, games, onSubmit, onClose, o
         <label className="grid gap-1 text-sm font-medium text-slate-700">
           Time (HH:mm:ss)
           <input
-            className="rounded-xl border border-slate-300 px-3 py-2"
+            className="rounded-xl border border-slate-300 px-3 py-2 text-sm"
             value={form.time}
             onChange={(event) => {
               setTimeError('')
@@ -206,7 +206,7 @@ export function ManualCaptureModal({ open, pokemons, games, onSubmit, onClose, o
         <label className="grid gap-1 text-sm font-medium text-slate-700">
           Date
           <input
-            className="rounded-xl border border-slate-300 px-3 py-2"
+            className="rounded-xl border border-slate-300 px-3 py-2 text-sm"
             type="datetime-local"
             value={form.date}
             onChange={(event) => patchForm({ date: event.target.value })}
@@ -222,11 +222,11 @@ export function ManualCaptureModal({ open, pokemons, games, onSubmit, onClose, o
           Used Shiny Charm
         </label>
 
-        <div className="mt-3 flex justify-end gap-3">
-          <button className="rounded-xl border border-slate-300 px-4 py-2" onClick={onClose} type="button">
+        <div className="mt-3 flex justify-end gap-2 sm:mt-4 sm:gap-3">
+          <button className="rounded-xl border border-slate-300 px-3 py-1 text-sm font-medium sm:px-4 sm:py-2" onClick={onClose} type="button">
             Cancel
           </button>
-          <button className="rounded-xl bg-slate-900 px-4 py-2 font-semibold text-white" type="submit">
+          <button className="rounded-xl bg-slate-900 px-3 py-1 text-sm font-semibold text-white sm:px-4 sm:py-2" type="submit">
             Save Capture
           </button>
         </div>
