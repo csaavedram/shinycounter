@@ -22,14 +22,14 @@ describe('probability engine', () => {
     expect(calculateRolls(game, hunt)).toBe(3)
   })
 
-  it('adds sparkling power and outbreak bonuses in Scarlet/Violet outbreak method', () => {
-    const game = gameById('scarlet-violet')
+  it('adds sparkling power bonus in Legends Z-A', () => {
+    const game = gameById('legends-za')
     const hunt = {
-      method: 'outbreak',
+      method: 'encounters',
       modifiers: {
         shinyCharm: true,
         sparklingPower: 3,
-        outbreak: true,
+        outbreak: false,
         research: 'none',
       },
     }
@@ -37,8 +37,8 @@ describe('probability engine', () => {
     const rate = getEffectiveRate(game, hunt)
 
     expect(rate.denominator).toBe(4096)
-    expect(rate.rolls).toBe(8)
-    expect(rate.effectiveRate).toBeCloseTo(8 / 4096)
+    expect(rate.rolls).toBe(7)
+    expect(rate.effectiveRate).toBeCloseTo(7 / 4096)
   })
 
   it('uses +3 shiny charm bonus in Legends Z-A', () => {

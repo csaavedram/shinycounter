@@ -246,14 +246,13 @@ export const GAMES = [
     dexRange: [1, 1025],
     mechanics: {
       shinyCharm: true,
-      sparklingPower: true,
+      sparklingPower: false,
       outbreak: true,
       research: false,
     },
     methods: ['encounters', 'outbreak', 'breeding', 'masuda', 'sandwich'],
     rules: {
       shinyCharmBonus: 2,
-      sparklingPowerBonus: [0, 1, 2, 3],
     },
   },
   {
@@ -279,13 +278,14 @@ export const GAMES = [
     dexRange: [1, 1025],
     mechanics: {
       shinyCharm: true,
-      sparklingPower: false,
+      sparklingPower: true,
       outbreak: false,
       research: false,
     },
     methods: ['encounters'],
     rules: {
       shinyCharmBonus: 3,
+      sparklingPowerBonus: [0, 1, 2, 3],
     },
   },
 ]
